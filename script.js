@@ -1,0 +1,1 @@
+const CHAVE_STORAGE = "jogo-da-velha";

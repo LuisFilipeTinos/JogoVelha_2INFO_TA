@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Velha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="app">
+        <header>
+            <p class="ornamento">⚔</p>
+            <h1>Jogo da Velha Medieval</h1>
+            <p class="subtitulo">
+                Que os cavaleiros se enfrentem. 
+                Os feitos ficarão registrados.
+            </p>
+        </header>
+
+        <section class="jogadores">
+            <label class="jogador x">
+                <span class="simbolo">X</span>
+                <input type="text" id="nome-x" 
+                    maxlength="20" placeholder="Cavaleiro X">
+            </label>
+            <label class="jogador o">
+                <span class="simbolo">O</span>
+                <input type="text" id="nome-o" 
+                    maxlength="20" placeholder="Cavaleiro O">
+            </label>
+        </section>
+
+        <section class="placar">
+            <div class="ponto x">
+                <span id="placar-nome-x">Cavaleiro X</span>
+                <strong id="placar-x">0</strong>
+            </div>
+            <div class="ponto empate">
+                <span>Empates</span>
+                <strong id="placar-empate">0</strong>
+            </div>
+            <div class="ponto o">
+                <span id="placar-nome-o">Cavaleiro O</span>
+                <strong id="placar-o">0</strong>
+            </div>
+        </section>
+
+        <p id="status" class="status">Vez de X</p>
+        <div id="tabuleiro" class="tabuleiro">
+
+        </div>
+
+        <div class="acoes">
+            <button id="btn-nova" class="btn">Nova batalha</button>
+            <button id="btn-apagar" class="btn secundario">Apagar os registros</button>
+        </div>
+
+        <section class="historico">
+            <h2>Crônicas de batalha</h2>
+            <ul id="lista-historico"></ul>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
