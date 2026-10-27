@@ -57,7 +57,61 @@ function verificarVencedor() {
         if (estTabuleiro[a] !== "" 
             && estTabuleiro[a] === estTabuleiro[b] 
             && estTabuleiro[a] === estTabuleiro[c]) {
-                
+                return { vencedor: estTabuleiro[a], linha: combinacao };
         }
     }
+    return null;
+}
+
+function jogar(posicao) {
+    if (estado.tabuleiro[posicao] !== '' || estado.fimDoJogo) {
+        return;
+    }
+
+    estado.tabuleiro[posicao] = estado.vez;
+
+    const resultado = verificarVencedor();
+
+    if (resultado) {
+        estado.fimDoJogo = true;
+        estado.linhaVencedora = resultado.linha;
+        estado.placar[resultado.vencedor]++;
+        //Fazer e chamar a função de histórico!
+    }
+    else if (!estado.tabuleiro.includes("")) {
+        estado.fimDoJogo = true;
+        estado.placar.empate++;
+        //Fazer e chamar a função de histórico!
+    }
+    else {
+        if (estado.vez == "X"){
+            estado.vez = "O";
+        }
+        else {
+            estado.vez = "X";
+        }
+
+        //estado.vez = estado.vez == "X" ? "O" : "X";
+    }
+
+    //Salvar o estado atualizado.
+    //Renderizar a tela novamente.
+}
+
+function registrarHistorico(texto) {
+    const hora = new Date().toLocaleTimeString(
+        "pt-BR",
+        {
+            hour: "2-digit",
+            minutes: "2-digit"
+        }
+    );
+
+    estado.historico.unshift(`${hora} - ${texto}`);
+
+    estado.historico = estado.historico.slice(0, 5);
+}
+
+function novaPartida() {
+    estado.quemComeca = estado.quemComeca == "X" ? "O" : "X";
 }
